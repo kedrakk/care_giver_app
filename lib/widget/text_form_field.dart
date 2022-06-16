@@ -9,6 +9,8 @@ class TextFormFieldWidget extends StatelessWidget {
     this.keyboardType = TextInputType.text,
     this.textInputAction = TextInputAction.done,
     required this.onFieldSubmitted,
+    this.maxLines = 1,
+    this.minLines = 1,
   }) : super(key: key);
   final TextEditingController controller;
   final FocusNode focusNode;
@@ -16,10 +18,14 @@ class TextFormFieldWidget extends StatelessWidget {
   final TextInputType keyboardType;
   final TextInputAction textInputAction;
   final void Function(String)? onFieldSubmitted;
+  final int maxLines;
+  final int minLines;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      maxLines: maxLines,
+      minLines: minLines,
       controller: controller,
       focusNode: focusNode,
       keyboardType: keyboardType,

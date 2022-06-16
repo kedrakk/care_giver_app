@@ -18,6 +18,13 @@ class AppTheme {
     primaryColor: primary,
     scaffoldBackgroundColor: octonary,
     cardColor: nonary,
+    appBarTheme: const AppBarTheme(
+      color: primary,
+      titleTextStyle: TextStyle(
+        color: denary,
+        fontSize: 20,
+      ),
+    ),
     textTheme: const TextTheme(
       headline6: TextStyle(
         fontSize: 24,
@@ -39,6 +46,7 @@ class AppTheme {
 
   static ButtonStyle elevatedButtonStyle(BuildContext context) {
     return ButtonStyle(
+      backgroundColor: MaterialStateProperty.all(primary),
       minimumSize: MaterialStateProperty.all(
         Size(
           MediaQuery.of(context).size.width,
