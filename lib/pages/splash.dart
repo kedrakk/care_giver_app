@@ -1,5 +1,6 @@
 import 'package:care_giver/const/theme.dart';
 import 'package:care_giver/pages/auth/login.dart';
+import 'package:care_giver/pages/auth/register.dart';
 import 'package:flutter/material.dart';
 
 class MyApp extends StatelessWidget {
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget {
       title: 'Care Giver',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
-      home: LoginPage(),
+      home: RegisterPage(),
     );
   }
 }
