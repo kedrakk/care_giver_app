@@ -36,4 +36,15 @@ class AppTheme {
       ),
     ),
   );
+
+  static ButtonStyle elevatedButtonStyle(BuildContext context) {
+    return ButtonStyle(
+      minimumSize: MaterialStateProperty.all(
+        Size(
+          MediaQuery.of(context).size.width,
+          MediaQuery.of(context).size.width * 1 / 9,
+        ),
+      ),
+    );
+  }
 }
