@@ -17,7 +17,10 @@ class AppTheme {
   static ThemeData lightTheme = ThemeData(
     primaryColor: primary,
     scaffoldBackgroundColor: octonary,
-    cardColor: nonary,
+    cardTheme: const CardTheme(
+      color: Colors.white,
+      elevation: 1,
+    ),
     appBarTheme: const AppBarTheme(
       color: primary,
       titleTextStyle: TextStyle(
