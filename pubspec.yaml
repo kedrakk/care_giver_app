@@ -37,6 +37,8 @@ dependencies:
   cached_network_image: ^3.2.1
   flutter_speed_dial: ^6.0.0
   google_maps_flutter: ^2.1.8
+  get: ^4.6.5
+  geolocator: ^8.2.1
 
 dev_dependencies:
   flutter_test:
