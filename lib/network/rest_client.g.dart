@@ -1,5 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
+// ignore_for_file: no_leading_underscores_for_local_identifiers
+
 part of 'rest_client.dart';
 
 // **************************************************************************
@@ -41,7 +43,7 @@ class _RestClient implements RestClient {
   }
 
   @override
-  Future<User> register() async {
+  Future<ResponseData> register(username, password, contact) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{
@@ -49,9 +51,13 @@ class _RestClient implements RestClient {
       r'Accept': 'application/json'
     };
     _headers.removeWhere((k, v) => v == null);
-    final _data = <String, dynamic>{};
-    final _result = await _dio.fetch<Map<String, dynamic>>(_setStreamType<User>(
-        Options(
+    final _data = {
+      'username': username,
+      'password': password,
+      'contact': contact
+    };
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<ResponseData>(Options(
                 method: 'POST',
                 headers: _headers,
                 extra: _extra,
@@ -59,7 +65,7 @@ class _RestClient implements RestClient {
             .compose(_dio.options, 'api/register',
                 queryParameters: queryParameters, data: _data)
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = User.fromJson(_result.data!);
+    final value = ResponseData.fromJson(_result.data!);
     return value;
   }
 

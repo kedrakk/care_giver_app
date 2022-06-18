@@ -1,4 +1,3 @@
-import 'package:care_giver/repo/auth_repo.dart';
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 
@@ -40,7 +39,6 @@ catchException(DioError error) {
 }
 
 catchUnauthenticated() async {
-  await Get.find<AuthRepo>().storeData("", "");
   Get.offAll(() => LoginPage());
   throw HttpException("Unaunthenticated");
 }

@@ -1,4 +1,3 @@
-import 'package:care_giver/helper/exception_helper.dart';
 import 'package:care_giver/repo/auth_repo.dart';
 import 'package:get/get.dart';
 
@@ -28,23 +27,24 @@ class AuthController extends GetxController {
     }
   }
 
-  Future<String> getUser() async {
+  Future<String> register(
+    String username,
+    String password,
+    String contact,
+  ) async {
+    _isLoading = true;
     try {
-      var username = await _repo.getData();
-      if (username.isNotEmpty) {
-        return username;
-      }
-      throw HttpException("User has not logged in");
+      final response = await _repo.register(
+        username,
+        password,
+        contact,
+      );
+      return response;
     } catch (e) {
       rethrow;
-    }
-  }
-
-  Future<void> logout() async {
-    try {
-      await _repo.logout();
-    } catch (e) {
-      rethrow;
+    } finally {
+      _isLoading = false;
+      update();
     }
   }
 }

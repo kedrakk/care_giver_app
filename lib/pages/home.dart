@@ -1,5 +1,4 @@
 import 'package:care_giver/const/theme.dart';
-import 'package:care_giver/controller/auth_controller.dart';
 import 'package:care_giver/data/news_feed.dart';
 import 'package:care_giver/widget/dialogs.dart';
 import 'package:care_giver/widget/newsfeed_card.dart';
@@ -71,32 +70,14 @@ class HomePage extends StatelessWidget {
                   labelStyle: const TextStyle(fontSize: 18.0),
                   onTap: () => _login(),
                 ),
-          SpeedDialChild(
-            child: const Icon(
-              Icons.accessibility,
-              color: AppTheme.octonary,
-            ),
-            backgroundColor: AppTheme.quaternary,
-            label: 'Accessibility',
-            labelStyle: const TextStyle(fontSize: 18.0),
-            onTap: () {
-              debugPrint('FIRST CHILD');
-            },
-          ),
         ],
       ),
     );
   }
 
   _logout() {
-    showLoadingDialog();
-    Get.find<AuthController>().logout().then((value) {
-      dismissDialog();
-      Get.offAll(() => LoginPage());
-    }).catchError((e) {
-      dismissDialog();
-      showErrorMessage(e.toString());
-    });
+    Get.offAll(() => LoginPage());
+    showSuccessMessage("Logout Success");
   }
 
   _login() {
