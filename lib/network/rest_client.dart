@@ -51,4 +51,22 @@ abstract class RestClient {
     @Path('lat') double lat,
     @Path('lng') double lng,
   );
+
+  @Headers({'Content-Type': 'application/json', 'Accept': 'application/json'})
+  @GET(APIs.alarm)
+  Future<ResponseData> getAllAlarm();
+
+  @Headers({'Content-Type': 'application/json', 'Accept': 'application/json'})
+  @POST(APIs.alarm)
+  Future<ResponseData> addNewAlarm(
+    @Field('alarm_time') String alarmTime,
+    @Field('flag_id') int flag,
+  );
+
+  @Headers({'Content-Type': 'application/json', 'Accept': 'application/json'})
+  @PUT(APIs.updateAlarm)
+  Future<ResponseData> updateAlarm(
+    @Path('id') int id,
+    @Field('flag_id') int flag,
+  );
 }

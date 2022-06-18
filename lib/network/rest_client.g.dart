@@ -1,5 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
+// ignore_for_file: no_leading_underscores_for_local_identifiers
+
 part of 'rest_client.dart';
 
 // **************************************************************************
@@ -182,6 +184,75 @@ class _RestClient implements RestClient {
                 extra: _extra,
                 contentType: 'application/json')
             .compose(_dio.options, 'api/hospitals/${lat}/${lng}',
+                queryParameters: queryParameters, data: _data)
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = ResponseData.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<ResponseData> getAllAlarm() async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{
+      r'Content-Type': 'application/json',
+      r'Accept': 'application/json'
+    };
+    _headers.removeWhere((k, v) => v == null);
+    final _data = <String, dynamic>{};
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<ResponseData>(Options(
+                method: 'GET',
+                headers: _headers,
+                extra: _extra,
+                contentType: 'application/json')
+            .compose(_dio.options, 'api/alarm',
+                queryParameters: queryParameters, data: _data)
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = ResponseData.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<ResponseData> addNewAlarm(alarmTime, flag) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{
+      r'Content-Type': 'application/json',
+      r'Accept': 'application/json'
+    };
+    _headers.removeWhere((k, v) => v == null);
+    final _data = {'alarm_time': alarmTime, 'flag_id': flag};
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<ResponseData>(Options(
+                method: 'POST',
+                headers: _headers,
+                extra: _extra,
+                contentType: 'application/json')
+            .compose(_dio.options, 'api/alarm',
+                queryParameters: queryParameters, data: _data)
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = ResponseData.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<ResponseData> updateAlarm(id, flag) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{
+      r'Content-Type': 'application/json',
+      r'Accept': 'application/json'
+    };
+    _headers.removeWhere((k, v) => v == null);
+    final _data = {'flag_id': flag};
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<ResponseData>(Options(
+                method: 'PUT',
+                headers: _headers,
+                extra: _extra,
+                contentType: 'application/json')
+            .compose(_dio.options, 'api/alarm/${id}',
                 queryParameters: queryParameters, data: _data)
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = ResponseData.fromJson(_result.data!);

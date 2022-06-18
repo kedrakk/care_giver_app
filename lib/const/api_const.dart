@@ -7,4 +7,6 @@ class APIs {
   static const String getnewsfeed = 'api/newsfeed';
   static const String searchNewsFeed = 'api/newsfeed/search/{name}';
   static const String getNearestHospitals = 'api/hospitals/{lat}/{lng}';
+  static const String alarm = 'api/alarm';
+  static const String updateAlarm = 'api/alarm/{id}';
 }

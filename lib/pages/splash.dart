@@ -2,6 +2,7 @@ import 'package:care_giver/const/theme.dart';
 import 'package:care_giver/controller/auth_controller.dart';
 import 'package:care_giver/network/rest_client.dart';
 import 'package:care_giver/pages/auth/login.dart';
+import 'package:care_giver/repo/alarm_repo.dart';
 import 'package:care_giver/repo/auth_repo.dart';
 import 'package:care_giver/repo/hospital_repo.dart';
 import 'package:care_giver/repo/newsfeed_repo.dart';
@@ -43,6 +44,11 @@ class MyApp extends StatelessWidget {
           );
           Get.put<HospitalRepo>(
             HospitalRepo(
+              Get.find(),
+            ),
+          );
+          Get.put<AlarmRepo>(
+            AlarmRepo(
               Get.find(),
             ),
           );
