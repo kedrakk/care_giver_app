@@ -45,7 +45,7 @@ class NewsfeedController extends GetxController {
 
   searchNewsFeed(String name) async {
     try {
-      _newsfeed = await _repo.searchNewsFeed(name);
+      _newsfeed = await _repo.searchNewsFeed(name.isEmpty ? "all" : name);
     } catch (e) {
       _error = e.toString();
     } finally {

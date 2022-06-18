@@ -37,8 +37,8 @@ class MyApp extends StatelessWidget {
               Get.find<AuthRepo>(),
             ),
           );
-          Get.lazyPut<NewsFeedRepo>(
-            () => NewsFeedRepo(
+          Get.put<NewsFeedRepo>(
+            NewsFeedRepo(
               Get.find(),
             ),
           );
