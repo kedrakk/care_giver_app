@@ -1,5 +1,8 @@
 import 'package:care_giver/const/theme.dart';
 import 'package:care_giver/data/news_feed.dart';
+import 'package:care_giver/pages/alarm/alarm_page.dart';
+import 'package:care_giver/pages/hospital/hospital_page.dart';
+import 'package:care_giver/pages/newsfeed/add_newsfeed.dart';
 import 'package:care_giver/widget/dialogs.dart';
 import 'package:care_giver/widget/newsfeed_card.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +10,7 @@ import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:get/get.dart';
 
 import 'auth/login.dart';
+import 'auth/register.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({
@@ -70,6 +74,58 @@ class HomePage extends StatelessWidget {
                   labelStyle: const TextStyle(fontSize: 18.0),
                   onTap: () => _login(),
                 ),
+          SpeedDialChild(
+            child: const Icon(
+              Icons.search,
+              color: AppTheme.octonary,
+            ),
+            backgroundColor: AppTheme.quaternary,
+            label: 'Search Hospitals',
+            labelStyle: const TextStyle(fontSize: 18),
+            onTap: () {
+              Get.to(() => const HospitalPage());
+            },
+          ),
+          SpeedDialChild(
+            child: const Icon(
+              Icons.alarm,
+              color: AppTheme.octonary,
+            ),
+            backgroundColor: AppTheme.quaternary,
+            label: 'Set Alarm Time',
+            labelStyle: const TextStyle(fontSize: 18),
+            onTap: () {
+              Get.to(() => const AlarmPage());
+            },
+          ),
+          username.isNotEmpty
+              ? SpeedDialChild(
+                  child: const Icon(
+                    Icons.add,
+                    color: AppTheme.octonary,
+                  ),
+                  backgroundColor: AppTheme.quaternary,
+                  label: 'Add Newsfeed',
+                  labelStyle: const TextStyle(fontSize: 18),
+                  onTap: () {
+                    Get.to(() => AddNewFeedPage());
+                  },
+                )
+              : SpeedDialChild(),
+          username.isNotEmpty
+              ? SpeedDialChild(
+                  child: const Icon(
+                    Icons.app_registration_outlined,
+                    color: AppTheme.octonary,
+                  ),
+                  backgroundColor: AppTheme.quaternary,
+                  label: 'Registration',
+                  labelStyle: const TextStyle(fontSize: 18),
+                  onTap: () {
+                    Get.to(() => RegisterPage());
+                  },
+                )
+              : SpeedDialChild(),
         ],
       ),
     );

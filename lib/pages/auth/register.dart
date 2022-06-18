@@ -154,6 +154,19 @@ class RegisterPage extends StatelessWidget {
                     ),
                   ),
                 ],
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextButton(
+                  onPressed: () => Get.back(),
+                  child: const Text(
+                    "Go back",
+                    style: TextStyle(
+                      color: AppTheme.septenary,
+                      decoration: TextDecoration.underline,
+                    ),
+                  ),
+                ),
               )
             ],
           ),
