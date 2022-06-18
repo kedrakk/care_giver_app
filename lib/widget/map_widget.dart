@@ -9,10 +9,12 @@ class MapWidget extends StatelessWidget {
     required this.latitude,
     required this.longitude,
     required this.mapType,
+    required this.markers,
   }) : super(key: key);
   final double latitude;
   final double longitude;
   final MapType mapType;
+  final Set<Marker> markers;
 
   final Completer<GoogleMapController> _controller = Completer();
 
@@ -20,6 +22,7 @@ class MapWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GoogleMap(
       mapType: mapType,
+      markers: markers,
       initialCameraPosition: CameraPosition(
         target: LatLng(latitude, longitude),
         zoom: 14.4746,

@@ -145,7 +145,7 @@ class _RestClient implements RestClient {
   @override
   Future<ResponseData> searchNewsfeed(name) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'name': name};
+    final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{
       r'Content-Type': 'application/json',
       r'Accept': 'application/json'
@@ -158,7 +158,30 @@ class _RestClient implements RestClient {
                 headers: _headers,
                 extra: _extra,
                 contentType: 'application/json')
-            .compose(_dio.options, 'api/newsfeed/search/{name}',
+            .compose(_dio.options, 'api/newsfeed/search/${name}',
+                queryParameters: queryParameters, data: _data)
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = ResponseData.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<ResponseData> getNearestHospitals(lat, lng) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{
+      r'Content-Type': 'application/json',
+      r'Accept': 'application/json'
+    };
+    _headers.removeWhere((k, v) => v == null);
+    final _data = <String, dynamic>{};
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<ResponseData>(Options(
+                method: 'GET',
+                headers: _headers,
+                extra: _extra,
+                contentType: 'application/json')
+            .compose(_dio.options, 'api/hospitals/${lat}/${lng}',
                 queryParameters: queryParameters, data: _data)
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = ResponseData.fromJson(_result.data!);

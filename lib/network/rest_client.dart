@@ -43,5 +43,12 @@ abstract class RestClient {
 
   @Headers({'Content-Type': 'application/json', 'Accept': 'application/json'})
   @GET(APIs.searchNewsFeed)
-  Future<ResponseData> searchNewsfeed(@Query('name') String name);
+  Future<ResponseData> searchNewsfeed(@Path('name') String name);
+
+  @Headers({'Content-Type': 'application/json', 'Accept': 'application/json'})
+  @GET(APIs.getNearestHospitals)
+  Future<ResponseData> getNearestHospitals(
+    @Path('lat') double lat,
+    @Path('lng') double lng,
+  );
 }

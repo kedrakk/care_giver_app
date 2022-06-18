@@ -32,14 +32,19 @@ class HomePage extends StatelessWidget {
             elevation: 0,
             title: Text('Hello ${username.isEmpty ? 'Guest' : username}'),
             actions: [
-              IconButton(
-                onPressed: () => Get.to(
-                  () => const SearchNewsFeedPage(),
-                ),
-                icon: const Icon(
-                  Icons.search,
-                ),
-              ),
+              controller.newsfeed.isEmpty
+                  ? const SizedBox(
+                      width: 0,
+                      height: 0,
+                    )
+                  : IconButton(
+                      onPressed: () => Get.to(
+                        () => const SearchNewsFeedPage(),
+                      ),
+                      icon: const Icon(
+                        Icons.search,
+                      ),
+                    ),
             ],
           ),
           body: controller.isLoading

@@ -34,7 +34,11 @@ catchException(DioError error) {
         throw HttpException(errorMessage);
     }
   } else {
-    throw HttpException(error.toString());
+    if (error.toString().toLowerCase().contains("socket")) {
+      throw HttpException("No internet connection");
+    } else {
+      throw HttpException(error.toString());
+    }
   }
 }
 
