@@ -42,4 +42,14 @@ class NewsfeedController extends GetxController {
       rethrow;
     }
   }
+
+  searchNewsFeed(String name) async {
+    try {
+      _newsfeed = await _repo.searchNewsFeed(name);
+    } catch (e) {
+      _error = e.toString();
+    } finally {
+      update();
+    }
+  }
 }

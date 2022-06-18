@@ -7,6 +7,7 @@ import '../helper/exception_helper.dart';
 abstract class INewsfeedRepo {
   Future<List<NewsFeed>> getAllNewsfeed();
   Future<bool> addNewsfeed(NewsFeed newsFeed);
+  Future<List<NewsFeed>> searchNewsFeed(String username);
 }
 
 class NewsFeedRepo implements INewsfeedRepo {
@@ -33,6 +34,16 @@ class NewsFeedRepo implements INewsfeedRepo {
         newsFeed.photo,
       );
       return true;
+    } catch (e) {
+      return catchException(e as DioError);
+    }
+  }
+
+  @override
+  Future<List<NewsFeed>> searchNewsFeed(String username) async {
+    try {
+      final response = await _client.searchNewsfeed(username);
+      return response.data.map<NewsFeed>((e) => NewsFeed.fromJson(e)).toList();
     } catch (e) {
       return catchException(e as DioError);
     }

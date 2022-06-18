@@ -12,6 +12,7 @@ class TextFormFieldWidget extends StatelessWidget {
     this.maxLines = 1,
     this.minLines = 1,
     required this.validator,
+    this.suffixIcon,
   }) : super(key: key);
   final TextEditingController controller;
   final FocusNode focusNode;
@@ -22,6 +23,7 @@ class TextFormFieldWidget extends StatelessWidget {
   final int maxLines;
   final int minLines;
   final String? Function(String?)? validator;
+  final Widget? suffixIcon;
 
   @override
   Widget build(BuildContext context) {
@@ -45,6 +47,11 @@ class TextFormFieldWidget extends StatelessWidget {
             color: Theme.of(context).primaryColor,
           ),
         ),
+        suffixIcon: suffixIcon ??
+            const SizedBox(
+              width: 0,
+              height: 0,
+            ),
       ),
       onFieldSubmitted: onFieldSubmitted,
       validator: validator,

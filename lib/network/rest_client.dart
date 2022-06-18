@@ -40,4 +40,8 @@ abstract class RestClient {
     @Field('caution') String caution,
     @Field('photo') String photo,
   );
+
+  @Headers({'Content-Type': 'application/json', 'Accept': 'application/json'})
+  @GET(APIs.searchNewsFeed)
+  Future<ResponseData> searchNewsfeed(@Query('name') String name);
 }

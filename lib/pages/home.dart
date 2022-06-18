@@ -4,6 +4,7 @@ import 'package:care_giver/pages/alarm/alarm_page.dart';
 import 'package:care_giver/pages/hospital/hospital_page.dart';
 import 'package:care_giver/pages/newsfeed/add_newsfeed.dart';
 import 'package:care_giver/pages/newsfeed/news_feed_detail.dart';
+import 'package:care_giver/pages/newsfeed/search_newsfeed.dart';
 import 'package:care_giver/repo/newsfeed_repo.dart';
 import 'package:care_giver/widget/dialogs.dart';
 import 'package:care_giver/widget/newsfeed_card.dart';
@@ -31,7 +32,14 @@ class HomePage extends StatelessWidget {
             elevation: 0,
             title: Text('Hello ${username.isEmpty ? 'Guest' : username}'),
             actions: [
-              IconButton(onPressed: () {}, icon: const Icon(Icons.search)),
+              IconButton(
+                onPressed: () => Get.to(
+                  () => const SearchNewsFeedPage(),
+                ),
+                icon: const Icon(
+                  Icons.search,
+                ),
+              ),
             ],
           ),
           body: controller.isLoading
