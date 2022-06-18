@@ -4,19 +4,26 @@ import 'package:flutter/cupertino.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class MapWidget extends StatelessWidget {
-  MapWidget({Key? key}) : super(key: key);
+  MapWidget({
+    Key? key,
+    required this.latitude,
+    required this.longitude,
+    required this.mapType,
+  }) : super(key: key);
+  final double latitude;
+  final double longitude;
+  final MapType mapType;
 
   final Completer<GoogleMapController> _controller = Completer();
-  final CameraPosition _kGooglePlex = const CameraPosition(
-    target: LatLng(37.42796133580664, -122.085749655962),
-    zoom: 14.4746,
-  );
 
   @override
   Widget build(BuildContext context) {
     return GoogleMap(
-      mapType: MapType.hybrid,
-      initialCameraPosition: _kGooglePlex,
+      mapType: mapType,
+      initialCameraPosition: CameraPosition(
+        target: LatLng(latitude, longitude),
+        zoom: 14.4746,
+      ),
       onMapCreated: (GoogleMapController controller) {
         _controller.complete(controller);
       },
