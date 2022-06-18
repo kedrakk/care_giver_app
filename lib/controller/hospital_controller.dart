@@ -1,7 +1,6 @@
 import 'package:care_giver/data/hospital.dart';
 import 'package:care_giver/helper/exception_helper.dart';
 import 'package:care_giver/repo/hospital_repo.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -25,6 +24,7 @@ class HospitalController extends GetxController {
   final IHospitalRepo _repo;
   HospitalController(this._repo);
 
+  // ignore: prefer_final_fields
   Set<Marker> _markers = {};
   Set<Marker> get markers => _markers;
 
