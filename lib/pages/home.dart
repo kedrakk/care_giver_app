@@ -3,6 +3,7 @@ import 'package:care_giver/controller/newsfeed_controller.dart';
 import 'package:care_giver/pages/alarm/alarm_page.dart';
 import 'package:care_giver/pages/hospital/hospital_page.dart';
 import 'package:care_giver/pages/newsfeed/add_newsfeed.dart';
+import 'package:care_giver/pages/newsfeed/news_feed_detail.dart';
 import 'package:care_giver/repo/newsfeed_repo.dart';
 import 'package:care_giver/widget/dialogs.dart';
 import 'package:care_giver/widget/newsfeed_card.dart';
@@ -57,6 +58,11 @@ class HomePage extends StatelessWidget {
                         itemBuilder: (context, index) {
                           final newsfeed = controller.newsfeed[index];
                           return NewsfeedCardWidget(
+                            onTap: () => Get.to(
+                              () => NewsFeedDetailPage(
+                                newsFeed: newsfeed,
+                              ),
+                            ),
                             newsFeed: newsfeed,
                           );
                         },

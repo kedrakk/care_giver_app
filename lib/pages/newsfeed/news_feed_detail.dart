@@ -1,28 +1,30 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:care_giver/const/theme.dart';
 import 'package:care_giver/data/news_feed.dart';
 import 'package:flutter/material.dart';
 
-class NewsfeedCardWidget extends StatelessWidget {
-  const NewsfeedCardWidget({
+import '../../const/theme.dart';
+
+class NewsFeedDetailPage extends StatelessWidget {
+  const NewsFeedDetailPage({
     Key? key,
     required this.newsFeed,
-    required this.onTap,
   }) : super(key: key);
   final NewsFeed newsFeed;
-  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Card(
-        margin: const EdgeInsets.all(10),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          newsFeed.name,
+        ),
+      ),
+      body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
             mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10.0),
@@ -37,9 +39,9 @@ class NewsfeedCardWidget extends StatelessWidget {
               const Divider(
                 color: AppTheme.nonary,
               ),
-              ListTile(
-                contentPadding: const EdgeInsets.symmetric(horizontal: 4),
-                leading: CachedNetworkImage(
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 1 / 5,
+                child: CachedNetworkImage(
                   imageUrl: newsFeed.photo,
                   placeholder: (context, url) =>
                       const CircularProgressIndicator(),
@@ -47,16 +49,15 @@ class NewsfeedCardWidget extends StatelessWidget {
                   width: 100,
                   fit: BoxFit.contain,
                 ),
-                title: Padding(
-                  padding: const EdgeInsets.only(bottom: 7.0),
-                  child: Text(newsFeed.instruction),
-                ),
-                subtitle: Text(
-                  "* ${newsFeed.caution}",
-                  style: const TextStyle(
-                    color: AppTheme.septenary,
-                    fontStyle: FontStyle.italic,
-                  ),
+              ),
+              const SizedBox(height: 10),
+              Text(newsFeed.instruction),
+              const SizedBox(height: 10),
+              Text(
+                "* ${newsFeed.caution}",
+                style: const TextStyle(
+                  color: AppTheme.septenary,
+                  fontStyle: FontStyle.italic,
                 ),
               ),
             ],
