@@ -1,4 +1,8 @@
+import 'package:care_giver/repo/auth_repo.dart';
 import 'package:dio/dio.dart';
+import 'package:get/get.dart';
+
+import '../pages/auth/login.dart';
 
 class HttpException implements Exception {
   final String message;
@@ -18,11 +22,13 @@ catchException(DioError error) {
       case 400:
         throw HttpException(errorMessage);
       case 401:
-        throw HttpException(errorMessage);
+        Get.offAll(() => LoginPage());
+        throw HttpException("Unaunthenticated");
       case 403:
-        throw HttpException(errorMessage);
+        Get.offAll(() => LoginPage());
+        throw HttpException("Unaunthenticated");
       case 404:
-        throw HttpException(errorMessage);
+        throw HttpException("Resource Not Found");
       case 500:
         throw HttpException("Server Error");
       default:
@@ -31,4 +37,10 @@ catchException(DioError error) {
   } else {
     throw HttpException(error.toString());
   }
+}
+
+catchUnauthenticated() async {
+  await Get.find<AuthRepo>().storeData("", "");
+  Get.offAll(() => LoginPage());
+  throw HttpException("Unaunthenticated");
 }

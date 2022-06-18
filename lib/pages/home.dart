@@ -1,17 +1,26 @@
 import 'package:care_giver/const/theme.dart';
+import 'package:care_giver/controller/auth_controller.dart';
 import 'package:care_giver/data/news_feed.dart';
+import 'package:care_giver/widget/dialogs.dart';
 import 'package:care_giver/widget/newsfeed_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+import 'package:get/get.dart';
+
+import 'auth/login.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({
+    Key? key,
+    required this.username,
+  }) : super(key: key);
+  final String username;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Newsfeed'),
+        title: Text('Hello $username'),
         actions: [
           IconButton(onPressed: () {}, icon: const Icon(Icons.search)),
         ],
@@ -40,6 +49,27 @@ class HomePage extends StatelessWidget {
         elevation: 8.0,
         shape: const CircleBorder(),
         children: [
+          username.isNotEmpty
+              ? SpeedDialChild(
+                  child: const Icon(
+                    Icons.logout,
+                    color: AppTheme.octonary,
+                  ),
+                  backgroundColor: AppTheme.quaternary,
+                  label: 'Logout',
+                  labelStyle: const TextStyle(fontSize: 18.0),
+                  onTap: () {
+                    showLoadingDialog();
+                    Get.find<AuthController>().logout().then((value) {
+                      dismissDialog();
+                      Get.offAll(() => LoginPage());
+                    }).catchError((e) {
+                      dismissDialog();
+                      showErrorMessage(e.toString());
+                    });
+                  },
+                )
+              : SpeedDialChild(),
           SpeedDialChild(
             child: const Icon(
               Icons.accessibility,

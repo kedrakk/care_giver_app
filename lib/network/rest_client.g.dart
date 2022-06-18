@@ -1,7 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-// ignore_for_file: no_leading_underscores_for_local_identifiers, avoid_returning_null_for_void
-
 part of 'rest_client.dart';
 
 // **************************************************************************
@@ -23,14 +21,21 @@ class _RestClient implements RestClient {
   Future<ResponseData> login(username, password) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
+    final _headers = <String, dynamic>{
+      r'Content-Type': 'application/json',
+      r'Accept': 'application/json'
+    };
+    _headers.removeWhere((k, v) => v == null);
     final _data = {'username': username, 'password': password};
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<ResponseData>(
-            Options(method: 'POST', headers: _headers, extra: _extra)
-                .compose(_dio.options, 'api/login',
-                    queryParameters: queryParameters, data: _data)
-                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+        _setStreamType<ResponseData>(Options(
+                method: 'POST',
+                headers: _headers,
+                extra: _extra,
+                contentType: 'application/json')
+            .compose(_dio.options, 'api/login',
+                queryParameters: queryParameters, data: _data)
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = ResponseData.fromJson(_result.data!);
     return value;
   }
@@ -39,10 +44,18 @@ class _RestClient implements RestClient {
   Future<User> register() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
+    final _headers = <String, dynamic>{
+      r'Content-Type': 'application/json',
+      r'Accept': 'application/json'
+    };
+    _headers.removeWhere((k, v) => v == null);
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(_setStreamType<User>(
-        Options(method: 'POST', headers: _headers, extra: _extra)
+        Options(
+                method: 'POST',
+                headers: _headers,
+                extra: _extra,
+                contentType: 'application/json')
             .compose(_dio.options, 'api/register',
                 queryParameters: queryParameters, data: _data)
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
@@ -51,17 +64,27 @@ class _RestClient implements RestClient {
   }
 
   @override
-  Future<void> logout() async {
+  Future<ResponseData> logout(autho) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
+    final _headers = <String, dynamic>{
+      r'Content-Type': 'application/json',
+      r'Accept': 'application/json',
+      r'Authorization': autho
+    };
+    _headers.removeWhere((k, v) => v == null);
     final _data = <String, dynamic>{};
-    await _dio.fetch<void>(_setStreamType<void>(
-        Options(method: 'POST', headers: _headers, extra: _extra)
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<ResponseData>(Options(
+                method: 'POST',
+                headers: _headers,
+                extra: _extra,
+                contentType: 'application/json')
             .compose(_dio.options, 'api/logout',
                 queryParameters: queryParameters, data: _data)
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    return null;
+    final value = ResponseData.fromJson(_result.data!);
+    return value;
   }
 
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {

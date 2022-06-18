@@ -1,5 +1,6 @@
 import 'package:care_giver/const/theme.dart';
 import 'package:care_giver/controller/auth_controller.dart';
+import 'package:care_giver/pages/home.dart';
 import 'package:care_giver/widget/dialogs.dart';
 import 'package:care_giver/widget/password_form_field.dart';
 import 'package:care_giver/widget/text_form_field.dart';
@@ -82,8 +83,10 @@ class LoginPage extends StatelessWidget {
                               .then(
                             (value) {
                               dismissDialog();
-                              debugPrint(
-                                value.toString(),
+                              Get.offAll(
+                                () => HomePage(
+                                  username: value,
+                                ),
                               );
                             },
                           ).catchError((e) {
