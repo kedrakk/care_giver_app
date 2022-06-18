@@ -10,6 +10,7 @@ class PasswordFormFieldWidget extends StatefulWidget {
     this.keyboardType = TextInputType.text,
     this.textInputAction = TextInputAction.done,
     required this.onFieldSubmitted,
+    required this.validator,
   }) : super(key: key);
   final bool obscureText;
   final TextEditingController controller;
@@ -18,6 +19,7 @@ class PasswordFormFieldWidget extends StatefulWidget {
   final TextInputType keyboardType;
   final TextInputAction textInputAction;
   final void Function(String)? onFieldSubmitted;
+  final String? Function(String?)? validator;
 
   @override
   State<PasswordFormFieldWidget> createState() =>
@@ -72,6 +74,7 @@ class _PasswordFormFieldWidgetState extends State<PasswordFormFieldWidget> {
         ),
       ),
       onFieldSubmitted: widget.onFieldSubmitted,
+      validator: widget.validator,
     );
   }
 }

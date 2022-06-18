@@ -43,6 +43,9 @@ class AddNewFeedPage extends StatelessWidget {
                     onFieldSubmitted: (value) {
                       FocusScope.of(context).requestFocus(_instructionFocus);
                     },
+                    validator: (value) {
+                      return null;
+                    },
                   ),
                 ),
                 Padding(
@@ -56,6 +59,9 @@ class AddNewFeedPage extends StatelessWidget {
                     labelText: 'Instruction',
                     onFieldSubmitted: (value) {
                       FocusScope.of(context).requestFocus(_cautionFocus);
+                    },
+                    validator: (value) {
+                      return null;
                     },
                   ),
                 ),
@@ -71,6 +77,9 @@ class AddNewFeedPage extends StatelessWidget {
                     onFieldSubmitted: (value) {
                       FocusScope.of(context).requestFocus(_photoPathFocus);
                     },
+                    validator: (value) {
+                      return null;
+                    },
                   ),
                 ),
                 Padding(
@@ -84,6 +93,9 @@ class AddNewFeedPage extends StatelessWidget {
                         labelText: "PhotoPath",
                         onFieldSubmitted: (value) {
                           FocusScope.of(context).unfocus();
+                        },
+                        validator: (value) {
+                          return null;
                         },
                       ),
                       const SizedBox(height: 5),

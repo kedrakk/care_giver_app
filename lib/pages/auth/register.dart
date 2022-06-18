@@ -40,6 +40,9 @@ class RegisterPage extends StatelessWidget {
                     onFieldSubmitted: (value) {
                       FocusScope.of(context).requestFocus(_contactFocus);
                     },
+                    validator: (value) {
+                      return null;
+                    },
                   ),
                 ),
                 Padding(
@@ -51,6 +54,9 @@ class RegisterPage extends StatelessWidget {
                     labelText: 'Gmail or Phone Number',
                     onFieldSubmitted: (value) {
                       FocusScope.of(context).requestFocus(_passwordFocus);
+                    },
+                    validator: (value) {
+                      return null;
                     },
                   ),
                 ),
@@ -66,6 +72,9 @@ class RegisterPage extends StatelessWidget {
                       FocusScope.of(context)
                           .requestFocus(_passwordConfirmFocus);
                     },
+                    validator: (value) {
+                      return null;
+                    },
                   ),
                 ),
                 Padding(
@@ -77,6 +86,9 @@ class RegisterPage extends StatelessWidget {
                     obscureText: true,
                     onFieldSubmitted: (value) {
                       FocusScope.of(context).unfocus();
+                    },
+                    validator: (value) {
+                      return null;
                     },
                   ),
                 ),

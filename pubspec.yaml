@@ -39,12 +39,16 @@ dependencies:
   google_maps_flutter: ^2.1.8
   get: ^4.6.5
   geolocator: ^8.2.1
+  retrofit: ">=3.0.0 <4.0.0"
+  logger:
+  dio: ^4.0.6
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   json_serializable: ^6.2.0
   build_runner: ^2.1.11
+  retrofit_generator: ">=4.0.0 <5.0.0"
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

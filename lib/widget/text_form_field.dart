@@ -11,6 +11,7 @@ class TextFormFieldWidget extends StatelessWidget {
     required this.onFieldSubmitted,
     this.maxLines = 1,
     this.minLines = 1,
+    required this.validator,
   }) : super(key: key);
   final TextEditingController controller;
   final FocusNode focusNode;
@@ -20,6 +21,7 @@ class TextFormFieldWidget extends StatelessWidget {
   final void Function(String)? onFieldSubmitted;
   final int maxLines;
   final int minLines;
+  final String? Function(String?)? validator;
 
   @override
   Widget build(BuildContext context) {
@@ -45,6 +47,7 @@ class TextFormFieldWidget extends StatelessWidget {
         ),
       ),
       onFieldSubmitted: onFieldSubmitted,
+      validator: validator,
     );
   }
 }
