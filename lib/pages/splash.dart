@@ -3,6 +3,7 @@ import 'package:care_giver/controller/auth_controller.dart';
 import 'package:care_giver/network/rest_client.dart';
 import 'package:care_giver/pages/auth/login.dart';
 import 'package:care_giver/repo/auth_repo.dart';
+import 'package:care_giver/repo/newsfeed_repo.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -32,6 +33,11 @@ class MyApp extends StatelessWidget {
           Get.put(
             AuthController(
               Get.find<AuthRepo>(),
+            ),
+          );
+          Get.lazyPut<NewsFeedRepo>(
+            () => NewsFeedRepo(
+              Get.find(),
             ),
           );
         },

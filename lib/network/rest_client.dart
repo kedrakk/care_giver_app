@@ -27,4 +27,17 @@ abstract class RestClient {
   @Headers({'Content-Type': 'application/json', 'Accept': 'application/json'})
   @POST(APIs.logout)
   Future<ResponseData> logout(@Header('Authorization') String autho);
+
+  @Headers({'Content-Type': 'application/json', 'Accept': 'application/json'})
+  @GET(APIs.getnewsfeed)
+  Future<ResponseData> getnewsfeed();
+
+  @Headers({'Content-Type': 'application/json', 'Accept': 'application/json'})
+  @POST(APIs.getnewsfeed)
+  Future<ResponseData> postnewsfeed(
+    @Field('name') String name,
+    @Field('instruction') String instruction,
+    @Field('caution') String caution,
+    @Field('photo') String photo,
+  );
 }
