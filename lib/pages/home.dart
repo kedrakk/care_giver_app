@@ -20,7 +20,8 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Hello $username'),
+        elevation: 0,
+        title: Text('Hello ${username.isEmpty ? 'Guest' : username}'),
         actions: [
           IconButton(onPressed: () {}, icon: const Icon(Icons.search)),
         ],
@@ -58,18 +59,18 @@ class HomePage extends StatelessWidget {
                   backgroundColor: AppTheme.quaternary,
                   label: 'Logout',
                   labelStyle: const TextStyle(fontSize: 18.0),
-                  onTap: () {
-                    showLoadingDialog();
-                    Get.find<AuthController>().logout().then((value) {
-                      dismissDialog();
-                      Get.offAll(() => LoginPage());
-                    }).catchError((e) {
-                      dismissDialog();
-                      showErrorMessage(e.toString());
-                    });
-                  },
+                  onTap: () => _logout(),
                 )
-              : SpeedDialChild(),
+              : SpeedDialChild(
+                  child: const Icon(
+                    Icons.login,
+                    color: AppTheme.octonary,
+                  ),
+                  backgroundColor: AppTheme.quaternary,
+                  label: 'Login',
+                  labelStyle: const TextStyle(fontSize: 18.0),
+                  onTap: () => _login(),
+                ),
           SpeedDialChild(
             child: const Icon(
               Icons.accessibility,
@@ -85,5 +86,20 @@ class HomePage extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  _logout() {
+    showLoadingDialog();
+    Get.find<AuthController>().logout().then((value) {
+      dismissDialog();
+      Get.offAll(() => LoginPage());
+    }).catchError((e) {
+      dismissDialog();
+      showErrorMessage(e.toString());
+    });
+  }
+
+  _login() {
+    Get.offAll(() => LoginPage());
   }
 }

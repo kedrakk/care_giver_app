@@ -109,7 +109,9 @@ class LoginPage extends StatelessWidget {
                 const Text('Not Registered?'),
                 const SizedBox(width: 8),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () => Get.offAll(
+                    () => const HomePage(username: ""),
+                  ),
                   child: const Text(
                     "Go to Newsfeed",
                     style: TextStyle(
