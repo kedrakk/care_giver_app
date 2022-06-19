@@ -86,6 +86,7 @@ class _SearchNewsFeedPageState extends State<SearchNewsFeedPage> {
   @override
   void dispose() {
     _debounce?.cancel();
+    _searchController.dispose();
     super.dispose();
   }
 }
